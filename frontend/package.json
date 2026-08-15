@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "mock-server": "json-server --watch ./src/mocks/db.json --port 3001",
+    "mock-server": "json-server --watch ./src/ocks/db.json --port 3001",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
