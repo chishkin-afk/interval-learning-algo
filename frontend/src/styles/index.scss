@@ -1,4 +1,6 @@
+@use './variables' as *;
 @use './fonts' as *;
+@use './mixins/sizes' as *;
 @use './mixins/flex';
 
 *, *::before, *::after {
@@ -19,6 +21,8 @@ body {
 
     width: 100%;
     min-height: 100lvh;
+
+    background: $color-bg;
 }
 
 :where(a, button, input, textarea, select) {
@@ -50,4 +54,8 @@ body {
 
 :where(ul,ol):not([class]) {
     list-style: none;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, span) {
+    font-size: px-to-rem(20);
 }
