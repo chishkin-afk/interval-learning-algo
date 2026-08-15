@@ -1,9 +1,15 @@
 @use '@/styles/mixins/mobile' as *;
+@use '@/styles/variables' as *;
 
 .info {
     width: 292px;
     min-height: 600px;
-    background: red;
+    
+    background: $color-bg-surface;
+
+    border-radius: 10px;
+
+    box-shadow: 4px 4px 20px 0 #00000016;
 
     @include mobile() {
         width: 100%;
