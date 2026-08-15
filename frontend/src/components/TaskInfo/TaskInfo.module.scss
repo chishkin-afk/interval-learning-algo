@@ -1,0 +1,11 @@
+@use '@/styles/mixins/mobile' as *;
+
+.info {
+    width: 292px;
+    min-height: 600px;
+    background: red;
+
+    @include mobile() {
+        width: 100%;
+    }
+}
