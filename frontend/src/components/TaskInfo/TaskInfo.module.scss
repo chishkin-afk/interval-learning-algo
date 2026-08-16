@@ -2,8 +2,12 @@
 @use '@/styles/variables' as *;
 
 .info {
-	width: 292px;
+	display: flex;
+	flex-direction: column;
+
+	width: 350px;
 	min-height: 600px;
+	padding: 20px;
 
 	background: $color-bg-surface;
 
@@ -11,7 +15,69 @@
 
 	box-shadow: 4px 4px 20px 0 #00000016;
 
+	gap: 20px;
+
 	@include mobile() {
 		width: 100%;
+	}
+}
+
+.description {
+	height: 171px;
+	resize: none;
+	border: none;
+	outline: none;
+
+	font-family: 'Anuphan', sans-serif;
+	font-weight: 600;
+
+	background: $color-bg;
+	color: $color-secondary-text;
+
+	padding: 10px;
+
+	border-radius: 10px;
+
+	&:focus-visible {
+		outline: none;
+		color: $color-primary-text;
+	}
+}
+
+.stats {
+	color: $color-secondary-text;
+	font-weight: 600;
+
+	&__value {
+		color: $color-primary-text;
+	}
+}
+
+.actions {
+	margin-top: auto;
+	display: flex;
+	flex-direction: column;
+
+	gap: 10px;
+
+	.actions__ud {
+		gap: 10px;
+		display: flex;
+		width: 100%;
+	}
+}
+
+.button {
+	width: 100%;
+	height: 40px;
+}
+
+.delete {
+	background: $color-danger;
+	&:hover {
+		color: $color-danger;
+
+		outline: 1px solid $color-danger;
+		outline-offset: -1px;
 	}
 }

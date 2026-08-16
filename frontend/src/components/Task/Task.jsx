@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { TasksContext } from '../../context/TasksContext'
 import Button from '../Button/Button'
 import IconDelete from '../IconDelete/IconDelete'
 import IconLink from '../IconLink/IconLink'
@@ -6,8 +8,10 @@ import styles from './Task.module.scss'
 function Task(props) {
 	const { task } = props
 
+	const { setCurrentTask } = useContext(TasksContext)
+
 	return (
-		<div className={styles.task}>
+		<div className={styles.task} onClick={() => setCurrentTask(task)}>
 			<div className={styles.title}>
 				<h3>{task.title}</h3>
 			</div>

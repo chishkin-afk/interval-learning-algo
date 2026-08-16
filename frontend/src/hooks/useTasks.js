@@ -84,6 +84,8 @@ const PAGE_SIZE = 5
 
 function useTasks() {
 	const [tasks, setTasks] = useState(MOCK_INIT_STATE)
+	const [currentTask, setCurrentTask] = useState(tasks[0] ?? null)
+
 	const [page, setPage] = useState(1)
 
 	const totalPages = 10
@@ -124,11 +126,15 @@ function useTasks() {
 
 	return {
 		tasks,
+		currentTask,
 		page,
 		totalPages,
+
 		addTask,
 		deleteTask,
 		updateTask,
+
+		setCurrentTask,
 
 		nextPage,
 		prevPage,

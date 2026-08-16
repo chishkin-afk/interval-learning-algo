@@ -10,11 +10,13 @@
 	font-weight: 600;
 
 	background: $color-bg;
+	color: $color-secondary-text;
 	padding: 10px;
 
 	border-radius: 10px;
 
 	&:focus-visible {
 		outline: none;
+		color: $color-primary-text;
 	}
 }

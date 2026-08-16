@@ -6,7 +6,7 @@ import Task from '../Task/Task'
 import styles from './TasksList.module.scss'
 
 function TasksList() {
-	const { tasks = [], newTaskTitle } = useContext(TasksContext)
+	const { tasks = [] } = useContext(TasksContext)
 
 	return (
 		<section className={styles.tasks}>

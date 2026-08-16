@@ -32,6 +32,7 @@ function AddTaskForm(props) {
 					onInput={onInputTitle}
 					className={styles.input__title}
 					autoComplete="off"
+					value={newTaskTitle}
 				/>
 				<Button type="submit" className={styles.button}>
 					Add
@@ -44,6 +45,7 @@ function AddTaskForm(props) {
 					onInput={onInputLeetcodeURL}
 					className={styles.input__leetcode}
 					autoComplete="off"
+					value={newLeetcodeURL}
 				/>
 			)}
 		</form>

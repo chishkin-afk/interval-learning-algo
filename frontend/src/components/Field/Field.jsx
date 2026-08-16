@@ -8,11 +8,13 @@ function Field(props) {
 		onInput,
 		id = '',
 		autoComplete,
+		value = '',
 	} = props
 
 	return (
 		<input
 			id={id}
+			value={value}
 			type={inputType}
 			placeholder={placeholder}
 			className={`${styles.field} ${className}`}
