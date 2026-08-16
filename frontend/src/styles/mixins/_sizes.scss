@@ -3,10 +3,10 @@
 $base-font-size: 16;
 
 @function px-to-rem($size) {
-    @if not math.is-unitless($size) {
-        @error 'The value must be without unit: #{$size}';
-    }
+	@if not math.is-unitless($size) {
+		@error 'The value must be without unit: #{$size}';
+	}
 
-    $sizeRem: math.div($size, $base-font-size) * 1rem;
-    @return $sizeRem
+	$sizeRem: math.div($size, $base-font-size) * 1rem;
+	@return $sizeRem;
 }

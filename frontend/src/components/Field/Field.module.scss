@@ -2,19 +2,19 @@
 @use '@/styles/variables' as *;
 
 .field {
-    height: 40px;
-    border: none;
-    outline: none;
+	height: 40px;
+	border: none;
+	outline: none;
 
-    font-family: 'Anuphan', sans-serif;
-    font-weight: 600;
+	font-family: 'Anuphan', sans-serif;
+	font-weight: 600;
 
-    background: $color-bg;
-    padding: 10px;
+	background: $color-bg;
+	padding: 10px;
 
-    border-radius: 10px;
+	border-radius: 10px;
 
-    &:focus-visible {
-        outline: none;
-    }
+	&:focus-visible {
+		outline: none;
+	}
 }

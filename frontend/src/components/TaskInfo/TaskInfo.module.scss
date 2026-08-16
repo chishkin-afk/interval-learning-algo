@@ -2,16 +2,16 @@
 @use '@/styles/variables' as *;
 
 .info {
-    width: 292px;
-    min-height: 600px;
-    
-    background: $color-bg-surface;
+	width: 292px;
+	min-height: 600px;
 
-    border-radius: 10px;
+	background: $color-bg-surface;
 
-    box-shadow: 4px 4px 20px 0 #00000016;
+	border-radius: 10px;
 
-    @include mobile() {
-        width: 100%;
-    }
+	box-shadow: 4px 4px 20px 0 #00000016;
+
+	@include mobile() {
+		width: 100%;
+	}
 }

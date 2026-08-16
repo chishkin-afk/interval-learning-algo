@@ -3,60 +3,63 @@
 @use './mixins/sizes' as *;
 @use './mixins/flex';
 
-*, *::before, *::after {
-    padding: 0; margin: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
-    min-height: 100lvh;
-    font-family: 'Anuphan', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.5
+	min-height: 100lvh;
+	font-family: 'Anuphan', sans-serif;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 1.5;
 }
 
 #root {
-    @include flex.center();
-    flex-direction: column;
+	@include flex.center();
+	flex-direction: column;
 
-    width: 100%;
-    min-height: 100lvh;
+	width: 100%;
+	min-height: 100lvh;
 
-    background: $color-bg;
+	background: $color-bg;
 }
 
 :where(a, button, input, textarea, select) {
-    font: inherit;
-    color: inherit;
+	font: inherit;
+	color: inherit;
 }
 
 :where(a) {
-    text-decoration: none;
-    cursor: pointerr;
+	text-decoration: none;
+	cursor: pointerr;
 }
 
 :where(img, svg, video, canvas) {
-  display: block;
-  max-width: 100%;
+	display: block;
+	max-width: 100%;
 }
 
 :where(button) {
-  background: none;
-  border: none;
-  cursor: default;
+	background: none;
+	border: none;
+	cursor: default;
 }
 
 :focus-visible {
-  outline: 2px dashed black;
-  outline-offset: 4px;
-  transition-duration: 0s !important;
+	outline: 2px dashed black;
+	outline-offset: 4px;
+	transition-duration: 0s !important;
 }
 
-:where(ul,ol){
-    list-style: none;
+:where(ul, ol) {
+	list-style: none;
 }
 
 :where(h1, h2, h3, h4, h5, h6, p, span) {
-    font-size: px-to-rem(20);
+	font-size: px-to-rem(20);
 }
