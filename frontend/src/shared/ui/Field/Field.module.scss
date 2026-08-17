@@ -1,0 +1,22 @@
+@use '@/app/styles/mixins/mobile' as *;
+@use '@/app/styles/variables' as *;
+
+.field {
+	height: 40px;
+	border: none;
+	outline: none;
+
+	font-family: 'Anuphan', sans-serif;
+	font-weight: 600;
+
+	background: $color-bg;
+	color: $color-secondary-text;
+	padding: 10px;
+
+	border-radius: 10px;
+
+	&:focus-visible {
+		outline: none;
+		color: $color-primary-text;
+	}
+}
