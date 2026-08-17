@@ -8,7 +8,8 @@ interface TaskProviderProps {
 
 function TasksProvider({ children }: TaskProviderProps) {
 	const [tasks, setTasks] = useState<Task[]>([])
-	const currentTask: Task | null = null
+	const [currentTask, setCurrentTask] = useState<Task | null>(null)
+
 	const pages = 1000
 	const [currentPage, setCurrentPage] = useState<number>(1)
 
@@ -63,6 +64,7 @@ function TasksProvider({ children }: TaskProviderProps) {
 					addTask,
 					deleteTask,
 					updateTask,
+					setCurrentTask,
 					nextPage,
 					prevPage,
 				}}

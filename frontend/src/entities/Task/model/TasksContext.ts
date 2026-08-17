@@ -12,6 +12,7 @@ interface TasksActions {
 	addTask(task: Task): void
 	deleteTask(taskId: string): void
 	updateTask(taskId: string, task: Task): Task | undefined
+	setCurrentTask: React.Dispatch<React.SetStateAction<Task | null>>
 	nextPage(): void
 	prevPage(): void
 }

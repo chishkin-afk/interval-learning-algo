@@ -1,0 +1,5 @@
+export { default as IconArrowLeft } from './icons/IconArrowLeft'
+export { default as IconArrowRight } from './icons/IconArrowRight'
+export { default as IconDelete } from './icons/IconDelete'
+export { default as IconLink } from './icons/IconLink'
+export { default as IconProfile } from './icons/IconProfile'
