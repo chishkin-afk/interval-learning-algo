@@ -6,10 +6,15 @@ interface TasksState {
 	currentTask: Task | null
 	pages: number
 	currentPage: number
+
+	newTaskTitle: string
+	setNewTaskTitle: React.Dispatch<React.SetStateAction<string>>
+	newLeetcodeURL: string
+	setNewLeetcodeURL: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface TasksActions {
-	addTask(task: Task): void
+	addTask(title: string, leetcodeURL: string): void
 	deleteTask(taskId: string): void
 	updateTask(taskId: string, task: Task): Task | undefined
 	setCurrentTask: React.Dispatch<React.SetStateAction<Task | null>>

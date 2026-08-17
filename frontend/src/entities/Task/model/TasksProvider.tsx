@@ -13,7 +13,22 @@ function TasksProvider({ children }: TaskProviderProps) {
 	const pages = 1000
 	const [currentPage, setCurrentPage] = useState<number>(1)
 
-	const addTask = useCallback((task: Task) => {
+	const [newTaskTitle, setNewTaskTitle] = useState<string>('')
+	const [newLeetcodeURL, setNewLeetcodeURL] = useState<string>('')
+
+	const addTask = useCallback((title: string, leetcodeURL: string) => {
+		const task: Task = {
+			id: crypto.randomUUID(),
+			user_id: crypto.randomUUID(),
+			title: title,
+			is_active: true,
+			description: '',
+			leetcode_url: leetcodeURL,
+			notification_count: 0,
+			next_notification: new Date(),
+			created_at: new Date(),
+		}
+
 		setTasks((prevTasks) => [...prevTasks, task])
 	}, [])
 
@@ -57,6 +72,11 @@ function TasksProvider({ children }: TaskProviderProps) {
 				currentTask,
 				currentPage,
 				pages,
+
+				newTaskTitle,
+				setNewTaskTitle,
+				newLeetcodeURL,
+				setNewLeetcodeURL,
 			}}
 		>
 			<TasksActionsContext.Provider
