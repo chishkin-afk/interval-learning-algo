@@ -6,6 +6,7 @@ interface FieldProps {
 	className?: string
 	placeholder?: string
 	onInput?(event: React.InputEvent<HTMLInputElement> | undefined): void
+	onChange?(event: React.ChangeEvent<HTMLInputElement> | undefined): void
 	id: string
 	autoComplete: React.HTMLInputAutoCompleteAttribute
 	value?: string
@@ -17,6 +18,7 @@ function Field(props: FieldProps) {
 		className = '',
 		placeholder = '',
 		onInput,
+		onChange,
 		id = '',
 		autoComplete,
 		value,
@@ -30,6 +32,7 @@ function Field(props: FieldProps) {
 			placeholder={placeholder}
 			className={`${styles.field} ${className}`}
 			onInput={onInput}
+			onChange={onChange}
 			autoComplete={autoComplete}
 		/>
 	)

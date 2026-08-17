@@ -1,4 +1,4 @@
-import { useTasksActions, useTasksState } from '@/entities/Task/model'
+import { useTasksActions, useTasksState } from '@/entities/task/model'
 import Button from '@/shared/ui/Button'
 import { IconArrowLeft, IconArrowRight } from '@/shared/ui/Icon'
 import styles from './Pagination.module.scss'

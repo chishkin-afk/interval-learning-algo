@@ -1,4 +1,4 @@
-import { useTasksActions, useTasksState } from '@/entities/Task/model/TasksContext'
+import { useTasksActions, useTasksState } from '@/entities/task/model'
 import Button from '@/shared/ui/Button'
 import Field from '@/shared/ui/Field'
 import type React from 'react'

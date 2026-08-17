@@ -1,5 +1,5 @@
-import { useTasksState } from '@/entities/Task/model'
-import TaskRow from '@/entities/Task/ui'
+import { useTasksState } from '@/entities/task/model'
+import TaskRow from '@/entities/task/ui'
 import AddTaskForm from '@/features/AddTaskForm'
 import Pagination from '../pagination'
 import styles from './TasksList.module.scss'

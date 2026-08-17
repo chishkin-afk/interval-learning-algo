@@ -1,5 +1,5 @@
-import MainPage from '@/pages/MainPage'
-import NotFoundPage from '../pages/NotFoundPage'
+import MainPage from '@/pages/main-page'
+import NotFoundPage from '../pages/not-found-page'
 import Router from './Router'
 import './styles/index.scss'
 
