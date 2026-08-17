@@ -1,9 +1,11 @@
+import MainPage from '@/pages/MainPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import Router from './Router'
 import './styles/index.scss'
 
 function App() {
 	const routes = {
+		'/': MainPage,
 		'*': NotFoundPage,
 	}
 
