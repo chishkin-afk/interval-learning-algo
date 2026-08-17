@@ -1,11 +1,9 @@
-import AddTaskForm from '@/features/AddTaskForm'
-import Pagination from '../pagination'
+import TasksList from '../tasks-list/'
 
 function Tasks() {
 	return (
 		<div>
-			<AddTaskForm />
-			<Pagination />
+			<TasksList />
 		</div>
 	)
 }

@@ -15,6 +15,8 @@ function AddTaskForm({ className }: AddTaskFormProps) {
 	const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		addTask(newTaskTitle, newLeetcodeURL)
+		setNewTaskTitle('')
+		setNewLeetcodeURL('')
 	}
 
 	const onInputTitle = ({ currentTarget }: React.InputEvent<HTMLInputElement>) => {
@@ -45,7 +47,7 @@ function AddTaskForm({ className }: AddTaskFormProps) {
 					placeholder="leetcode url..."
 					id="new-task-leetcode-url"
 					onInput={onInputLeetcodeURL}
-					className={styles.input_leetcode}
+					className={styles.input__leetcode}
 					autoComplete="off"
 					value={newLeetcodeURL}
 				/>
