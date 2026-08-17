@@ -1,5 +1,5 @@
 import TasksProvider from '@/entities/Task/model'
-import Tasks from '@/widgets/Tasks'
+import Tasks from '@/widgets/tasks'
 
 function MainPage() {
 	return (
