@@ -25,7 +25,7 @@ class Api {
 		}
 	}
 
-	async request(path: string, method: Method, body?: object): Promise<Response> {
+	async request<T>(path: string, method: Method, body?: object): Promise<T> {
 		const req: RequestInit = {
 			method: method,
 			headers: this._headers,
@@ -47,7 +47,27 @@ class Api {
 			throw new ApiError(resp.status, payload)
 		}
 
-		return resp
+		return resp.json() as Promise<T>
+	}
+
+	async get<T>(path: string): Promise<T> {
+		return this.request<T>(path, 'GET')
+	}
+
+	async post<T>(path: string, body: object): Promise<T> {
+		return this.request<T>(path, 'POST', body)
+	}
+
+	async patch<T>(path: string, body: object): Promise<T> {
+		return this.request<T>(path, 'PATCH', body)
+	}
+
+	async delete<T>(path: string): Promise<T> {
+		return this.request<T>(path, 'DELETE')
+	}
+
+	async put<T>(path: string, body: object): Promise<T> {
+		return this.request<T>(path, 'PUT', body)
 	}
 }
 
