@@ -1,6 +1,7 @@
 import type { MouseEvent } from 'react'
 
 interface Props {
+	className?: string
 	children: React.ReactNode
 	to: string
 }
