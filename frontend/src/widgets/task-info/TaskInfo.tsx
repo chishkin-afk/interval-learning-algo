@@ -12,11 +12,11 @@ function TaskInfo() {
 
 	useEffect(() => {
 		setLeetcodeURL(currentTask?.leetcode_url ?? '')
-	}, [])
+	}, [currentTask])
 
 	useEffect(() => {
 		setDescription(currentTask?.description ?? '')
-	}, [])
+	}, [currentTask])
 
 	if (!currentTask) {
 		return (
@@ -69,14 +69,12 @@ function TaskInfo() {
 						{currentTask.is_active ? 'true' : 'false'}
 					</span>
 				</p>
-				<div className={styles.actions}>
-					<Button className={`${styles.button} ${styles.actions__disable}`}>
-						disable
-					</Button>
-					<div className={styles.actions__ud}>
-						<Button className={styles.button}>save</Button>
-						<Button className={`${styles.button} ${styles.delete}`}>del</Button>
-					</div>
+			</div>
+			<div className={styles.actions}>
+				<Button className={`${styles.button} ${styles.actions__disable}`}>disable</Button>
+				<div className={styles.actions__ud}>
+					<Button className={styles.button}>save</Button>
+					<Button className={`${styles.button} ${styles.delete}`}>del</Button>
 				</div>
 			</div>
 		</section>

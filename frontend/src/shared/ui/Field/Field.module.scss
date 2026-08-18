@@ -20,3 +20,7 @@
 		color: $color-primary-text;
 	}
 }
+
+::placeholder {
+	color: $color-secondary-text;
+}
