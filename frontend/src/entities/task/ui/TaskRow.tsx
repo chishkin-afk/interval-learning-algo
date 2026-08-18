@@ -1,5 +1,6 @@
 import Button from '@/shared/ui/Button'
 import { IconDelete, IconLink } from '@/shared/ui/Icon'
+import LinkButton from '@/shared/ui/LinkButton'
 import { useTasksActions } from '../model'
 import type { Task } from '../model/types'
 import styles from './TaskRow.module.scss'
@@ -22,9 +23,9 @@ function TaskRow(props: TaskProps) {
 				<time dateTime={task.created_at.toISOString()} className={styles.createdAt}>
 					{task.created_at.toISOString().slice(0, 10)}
 				</time>
-				<a className={`${styles.button} ${styles.link}`} href={task.leetcode_url}>
+				<LinkButton href={task.leetcode_url} className={styles.button}>
 					<IconLink />
-				</a>
+				</LinkButton>
 				<Button className={styles.button}>
 					<IconDelete />
 				</Button>
