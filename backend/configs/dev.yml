@@ -1,11 +1,11 @@
 app:
   name: intask-backend
-  version: v0.0.1
-  env: ${APP_ENV}
+  version: 0.0.1
+  env: dev
 
 server:
   http:
-    addr: ${HTTP_ADDR}
+    addr: localhost:8001
     tls:
       enable: false
       server_cert_path: ./certs/server.crt
@@ -15,16 +15,17 @@ server:
     write_timeout: 2s
     idle_timeout: 30s
 
+// TODO: вынести пг в .env godotenv
 persistence:
-  migrations_path: ./migrations/
+  migrations_path: ./migrations
   postgres:
-    host: ${POSTGRES_HOST}
-    port: ${POSTGRES_PORT}
+    host: localhost
+    port: 5432
     sslmode: disable
     auth:
-      user: ${POSTGRES_USER}
-      password: ${POSTGRES_PASSWORD}
-      db: ${POSTGRES_DB}
+      user: chishkin
+      password: 1111
+      db: intask
     conns:
       max_opens: 5
       max_idles: 15
@@ -37,5 +38,5 @@ jwt:
   public_key_path: ./keys/jwtRS256.key.pub
 
 telegram:
-  bot_token: ${TELEGRAM_TOKEN}
+  bot_token: "token"
   timeout: 30s

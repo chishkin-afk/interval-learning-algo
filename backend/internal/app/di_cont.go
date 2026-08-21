@@ -11,6 +11,10 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
+const (
+	defaultConfigPath = "./configs/dev.yml"
+)
+
 type DI struct {
 	cfg *config.Config
 	log *slog.Logger
@@ -20,7 +24,12 @@ type DI struct {
 
 func (di *DI) Config() *config.Config {
 	if di.cfg == nil {
-		cfg, err := config.New(os.Getenv("APP_CONFIG_PATH"))
+		path := os.Getenv("APP_CONFIG_PATH")
+		if path == ""  {
+			path = defaultConfigPath
+		}
+
+		cfg, err := config.New(path)
 		if err != nil {
 			slog.Error("can't load config",
 				slog.String("error", err.Error()),

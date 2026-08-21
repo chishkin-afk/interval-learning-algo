@@ -2,6 +2,7 @@ package main
 
 import (
 	"log/slog"
+	"os"
 
 	"github.com/chishkin-afk/interval-learning-algo/backend/internal/app"
 	"github.com/chishkin-afk/interval-learning-algo/backend/internal/common/persistence/postgres"
@@ -16,6 +17,7 @@ func main() {
 		di.Log().Error("can't migrate db",
 			slog.String("error", err.Error()),
 		)
+		os.Exit(1)
 	}
 
 	di.Log().Info("all migrations has been applied.")
