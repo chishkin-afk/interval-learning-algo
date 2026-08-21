@@ -5,7 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/google/uuid"
+	"uuid"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -28,28 +29,28 @@ func TestNewUser_Success(t *testing.T) {
 	assert.Equal(t, user.Username(), username)
 	assert.Equal(t, user.Email(), email)
 	assert.True(t, user.PasswordHash().Compare(password))
-	assert.WithinDuration(t, user.CreatedAt(), now, 100 * time.Millisecond)
-	assert.WithinDuration(t, user.UpdatedAt(), now, 100 * time.Millisecond)
+	assert.WithinDuration(t, user.CreatedAt(), now, 100*time.Millisecond)
+	assert.WithinDuration(t, user.UpdatedAt(), now, 100*time.Millisecond)
 }
 
 func TestNewUser_Invalid(t *testing.T) {
 	empties := make([]rune, 256)
 	type data struct {
 		username string
-		email Email
+		email    Email
 		password string
 	}
 
-	testCases := []struct{
-		name string
-		input *data
+	testCases := []struct {
+		name     string
+		input    *data
 		expected error
 	}{
 		{
 			name: "empty_username",
 			input: &data{
 				username: "",
-				email: Email("mail@example.com"),
+				email:    Email("mail@example.com"),
 				password: "password",
 			},
 			expected: ErrInvalidUsername,
@@ -58,7 +59,7 @@ func TestNewUser_Invalid(t *testing.T) {
 			name: "too_long_username",
 			input: &data{
 				username: string(empties),
-				email: Email("mail@example.com"),
+				email:    Email("mail@example.com"),
 				password: "password",
 			},
 			expected: ErrInvalidUsername,
@@ -67,7 +68,7 @@ func TestNewUser_Invalid(t *testing.T) {
 			name: "invalid_email",
 			input: &data{
 				username: "username",
-				email: Email(""),
+				email:    Email(""),
 				password: "password",
 			},
 			expected: ErrInvalidEmail,
@@ -76,7 +77,7 @@ func TestNewUser_Invalid(t *testing.T) {
 			name: "invalid_password",
 			input: &data{
 				username: "username",
-				email: Email("mail@example.com"),
+				email:    Email("mail@example.com"),
 				password: "",
 			},
 			expected: ErrInvalidPassword,

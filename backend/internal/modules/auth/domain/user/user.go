@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/uuid"
+	"uuid"
 )
 
 var (
@@ -15,12 +15,12 @@ var (
 
 // User is a root aggragate of auth module.
 type User struct {
-	id uuid.UUID
-	username string
-	email Email
+	id           uuid.UUID
+	username     string
+	email        Email
 	passwordHash PasswordHash
-	createdAt time.Time
-	updatedAt time.Time
+	createdAt    time.Time
+	updatedAt    time.Time
 }
 
 func New(
@@ -45,12 +45,12 @@ func New(
 
 	now := time.Now().UTC()
 	return &User{
-		id: uuid.New(),
-		username: username,
-		email: email,
+		id:           uuid.New(),
+		username:     username,
+		email:        email,
 		passwordHash: passwordHash,
-		createdAt: now,
-		updatedAt: now,
+		createdAt:    now,
+		updatedAt:    now,
 	}, nil
 }
 
@@ -63,12 +63,12 @@ func From(
 	updatedAt time.Time,
 ) *User {
 	return &User{
-		id: id,
-		username: username,
-		email: email,
+		id:           id,
+		username:     username,
+		email:        email,
 		passwordHash: passwordHash,
-		createdAt: createdAt,
-		updatedAt: updatedAt,
+		createdAt:    createdAt,
+		updatedAt:    updatedAt,
 	}
 }
 

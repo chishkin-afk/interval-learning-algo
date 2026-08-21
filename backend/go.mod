@@ -1,13 +1,19 @@
 module github.com/chishkin-afk/interval-learning-algo/backend
 
-go 1.26.5
+go 1.27.0
 
 require (
+	github.com/Masterminds/squirrel v1.5.4
 	github.com/go-playground/validator/v10 v10.30.3
 	github.com/goccy/go-yaml v1.19.2
+	github.com/golang-migrate/migrate/v4 v4.19.1
+	github.com/jmoiron/sqlx v1.4.0
+	github.com/lib/pq v1.12.3
+	github.com/lmittmann/tint v1.2.0
 	github.com/stretchr/testify v1.11.1
 	github.com/testcontainers/testcontainers-go v0.44.0
 	github.com/testcontainers/testcontainers-go/modules/postgres v0.44.0
+	golang.org/x/crypto v0.54.0
 )
 
 require (
@@ -27,10 +33,17 @@ require (
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/ebitengine/purego v0.10.1 // indirect
 	github.com/felixge/httpsnoop v1.1.0 // indirect
+	github.com/gabriel-vasile/mimetype v1.4.13 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
+	github.com/go-playground/locales v0.14.1 // indirect
+	github.com/go-playground/universal-translator v0.18.1 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/klauspost/compress v1.18.6 // indirect
+	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
+	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
+	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20260330125221-c963978e514e // indirect
 	github.com/magiconair/properties v1.8.10 // indirect
 	github.com/moby/docker-image-spec v1.3.1 // indirect
@@ -56,20 +69,7 @@ require (
 	go.opentelemetry.io/otel v1.44.0 // indirect
 	go.opentelemetry.io/otel/metric v1.44.0 // indirect
 	go.opentelemetry.io/otel/trace v1.44.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
-)
-
-require (
-	github.com/gabriel-vasile/mimetype v1.4.13 // indirect
-	github.com/go-playground/locales v0.14.1 // indirect
-	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/golang-migrate/migrate/v4 v4.19.1
-	github.com/google/uuid v1.6.0
-	github.com/jmoiron/sqlx v1.4.0
-	github.com/leodido/go-urn v1.4.0 // indirect
-	github.com/lib/pq v1.12.3
-	github.com/lmittmann/tint v1.2.0
-	golang.org/x/crypto v0.54.0
 	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
