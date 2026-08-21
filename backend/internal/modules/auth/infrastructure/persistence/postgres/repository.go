@@ -13,12 +13,15 @@ import (
 	"github.com/lib/pq"
 )
 
+// DB defines the interface for database operations used by the repository.
+// It abstracts over *sql.DB and *sql.Tx to allow seamless transaction support.
 type DB interface {
 	ExecContext(ctx context.Context, query string, args ...any) (sql.Result, error)
 	QueryRowContext(ctx context.Context, query string, args ...any) *sql.Row
 	QueryContext(ctx context.Context, query string, args ...any) (*sql.Rows, error)
 }
 
+// TxDB extends DB with transaction management capabilities.
 type TxDB interface {
 	DB
 	BeginTx(ctx context.Context, opts *sql.TxOptions) (*sql.Tx, error)
@@ -34,6 +37,7 @@ type userRepository struct {
 	sb  squirrel.StatementBuilderType
 }
 
+// New creates a new userRepository instance with the given logger and database connection.
 func New(log *slog.Logger, db TxDB) *userRepository {
 	return &userRepository{
 		log: log,
@@ -42,6 +46,8 @@ func New(log *slog.Logger, db TxDB) *userRepository {
 	}
 }
 
+// Save persists a new user into the database.
+// Returns user.ErrAlreadyExists if a user with the same unique constraints already exists.
 func (ur *userRepository) Save(ctx context.Context, user *user.User) error {
 	ur.log.Debug("saving user into db",
 		slog.String("user_id", user.ID().String()),
@@ -69,6 +75,8 @@ func (ur *userRepository) save(ctx context.Context, db DB, user *user.User) erro
 	return nil
 }
 
+// GetByID retrieves a user by their UUID.
+// Returns user.ErrNotFound if no user with the given ID exists.
 func (ur *userRepository) GetByID(ctx context.Context, id uuid.UUID) (*user.User, error) {
 	ur.log.Debug("getting user from db by id",
 		slog.String("user_id", id.String()),
@@ -84,6 +92,8 @@ func (ur *userRepository) GetByID(ctx context.Context, id uuid.UUID) (*user.User
 	return user, nil
 }
 
+// GetByEmail retrieves a user by their email address.
+// Returns user.ErrNotFound if no user with the given email exists.
 func (ur *userRepository) GetByEmail(ctx context.Context, email user.Email) (*user.User, error) {
 	ur.log.Debug("getting user from db by email",
 		slog.String("email", email.String()),
@@ -108,6 +118,9 @@ func (ur *userRepository) get[T uuid.UUID | user.Email](ctx context.Context, db 
 	return scanRow(db.QueryRowContext(ctx, query, args))
 }
 
+// Update applies the provided update function to a user within a read-committed transaction.
+// It uses SELECT FOR UPDATE to prevent concurrent modifications.
+// Returns the updated user or an error if the user is not found or the update fails.
 func (ur *userRepository) Update(ctx context.Context, updFunc user.UpdateFunc, id uuid.UUID) (*user.User, error) {
 	tx, rollback, err := ur.beginTx(ctx)
 	if err != nil {
@@ -170,6 +183,8 @@ func (ur *userRepository) getForUpdate(ctx context.Context, db DB, id uuid.UUID)
 	return scanRow(db.QueryRowContext(ctx, query, args...))
 }
 
+// Delete removes a user from the database by their UUID.
+// Returns user.ErrNotFound if no user with the given ID exists.
 func (ur *userRepository) Delete(ctx context.Context, id uuid.UUID) error {
 	ur.log.Debug("deleting user from db",
 		slog.String("user_id", id.String()),
