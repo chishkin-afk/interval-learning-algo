@@ -6,3 +6,6 @@ keys/
 *.key.pub
 
 .env
+
+old/
+cover.out

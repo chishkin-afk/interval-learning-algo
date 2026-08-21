@@ -51,22 +51,24 @@ type Server struct {
 
 type Persistence struct {
 	MigrationsPath string `yaml:"migrations_path" validate:"required"`
-	Postgres struct{
-		Host string `yaml:"host" validate:"required,hostname"`
-		Port int `yaml:"port" validate:"required,gte=1,lte=65535"`
-		SSLMode string `yaml:"sslmode" validate:"required,oneof=disable enable"`
-		Auth struct{
-			User string `yaml:"user" validate:"required"`
-			Password string `yaml:"password" validate:"required"`
-			DB string `yaml:"db" validate:"required"`
-		} `yaml:"auth"`
-		Conns struct{
-			MaxOpens int `yaml:"max_opens" validate:"required,gte=1"`
-			MaxIdles int `yaml:"max_idles" validate:"required,gte=1"`
-			MaxLifetime time.Duration `yaml:"max_lifetime" validate:"required,min=1m"`
-			MaxIdleTime time.Duration `yaml:"max_idle_time" validate:"required,min=1m"`
-		} `yaml:"conns"`
-	} `yaml:"postgres"`
+	Postgres Postgres `yaml:"postgres" validate:"required"`
+}
+
+type Postgres struct{
+	Host string `yaml:"host" validate:"required,hostname"`
+	Port int `yaml:"port" validate:"required,gte=1,lte=65535"`
+	SSLMode string `yaml:"sslmode" validate:"required,oneof=disable enable"`
+	Auth struct{
+		User string `yaml:"user" validate:"required"`
+		Password string `yaml:"password" validate:"required"`
+		DB string `yaml:"db" validate:"required"`
+	} `yaml:"auth"`
+	Conns struct{
+		MaxOpens int `yaml:"max_opens" validate:"required,gte=1"`
+		MaxIdles int `yaml:"max_idles" validate:"required,gte=1"`
+		MaxLifetime time.Duration `yaml:"max_lifetime" validate:"required,min=1m"`
+		MaxIdleTime time.Duration `yaml:"max_idle_time" validate:"required,min=1m"`
+	} `yaml:"conns"`
 }
 
 type JWT struct {
