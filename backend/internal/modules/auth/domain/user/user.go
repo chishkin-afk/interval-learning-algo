@@ -72,6 +72,18 @@ func From(
 	}
 }
 
+func (u *User) ChangeUsername(username string) error {
+	username = strings.TrimSpace(username)
+	if err := validateUsername(username); err != nil {
+		return fmt.Errorf("%w: %s", err, username)
+	}
+
+	u.username = username
+	u.updatedAt = time.Now().UTC()
+
+	return nil
+}
+
 func (u *User) ID() uuid.UUID {
 	return u.id
 }

@@ -129,3 +129,57 @@ func TestFormUser(t *testing.T) {
 	assert.Equal(t, user.CreatedAt(), createdAt)
 	assert.Equal(t, user.UpdatedAt(), updatedAt)
 }
+
+func TestChangeUsername(t *testing.T) {
+	user, _ := New("username", Email("mail@example.com"), "password")
+
+	assert.Equal(t, "username", user.Username())
+
+	changedUsername := "another"
+	err := user.ChangeUsername(changedUsername)
+
+	require.NoError(t, err)
+	assert.Equal(t, changedUsername, user.Username())
+}
+
+func TestChangeUsername_Invalid(t *testing.T) {
+	user, _ := New("username", Email("mail@example.com"), "password")
+
+	empties := make([]rune, 129)
+	testCases := []struct {
+		name     string
+		input    string
+		expected error
+	}{
+		{
+			name:     "empty_username",
+			input:    "",
+			expected: ErrInvalidUsername,
+		},
+		{
+			name:     "only_spaces",
+			input:    "    ",
+			expected: ErrInvalidUsername,
+		},
+		{
+			name:     "too_large_username",
+			input:    string(empties),
+			expected: ErrInvalidUsername,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			err := user.ChangeUsername(tc.input)
+
+			require.Error(t, err)
+			assert.Equal(t, "username", user.Username())
+
+			if !errors.Is(err, tc.expected) {
+				t.Errorf("want %v, got %v", tc.expected, err)
+			}
+		})
+	}
+}
